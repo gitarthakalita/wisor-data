@@ -7,6 +7,8 @@ class Store {
     // }
     
     @observable user = []
+
+    @observable address = []
     
 
 }

@@ -6,6 +6,7 @@ import { observer, inject } from "mobx-react";
 import UserCard from './components/UserCard';
 
 import './user-profile.scss';
+// import { toJS } from 'mobx';
 
 @inject("store")
 @observer
@@ -96,7 +97,7 @@ class UserProfile extends Component {
 
                 store.user = response.data[0];
 
-                // console.log(store.user);
+                // console.log(toJS(store.user));
 
                 // console.log(response.data[0]);
 

@@ -1,11 +1,29 @@
 .user-card-container{
-    width: 25rem;
+    width: 30rem;
 
     margin: 5rem auto;
 }
 
 .info-item{
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
     margin: 1rem 0;
+
+    align-items: center;
+
+    gap:1rem;
+
+    .label{
+        padding: 0.5rem;
+
+        background: rgb(247, 245, 245);
+
+        border-left: 0.2rem solid rgb(104, 122, 206);
+
+        width: 100%;
+    }
+
+    .info{
+        text-transform: capitalize;
+    }
 }
