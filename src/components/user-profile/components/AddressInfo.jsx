@@ -6,10 +6,13 @@ import { toJS } from 'mobx';
 const AddressInfo = inject("store")(observer(({ store }) => {
 
     
-        console.log(toJS(store.user))
+        // console.log(toJS(store.user))
 
         useEffect(() => {
             // store.address = toJS(store.user).wsrUserAddress;
+
+            // console.log(toJS(store.address));
+            
         })
 
 
