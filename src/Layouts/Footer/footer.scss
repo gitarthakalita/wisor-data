@@ -1,0 +1,36 @@
+.footer-container {
+
+    bottom: 0;
+    right: 0;
+    left: 0;
+    flex-shrink: 0;
+
+
+    padding: 5rem;
+    height: 30rem;
+
+    background: rgba(250, 251, 252, 0.534);
+
+    display: grid;
+
+    grid-template-columns: 1.5fr 2fr 1.5fr;
+    
+    gap: 5rem;
+
+    .logo{
+        img{
+            height: 4rem;
+        }
+    }
+    .menu {
+        display: flex;
+
+        flex-direction: column;
+
+        width: 15rem;
+
+        justify-content: space-between;
+
+
+    }
+}

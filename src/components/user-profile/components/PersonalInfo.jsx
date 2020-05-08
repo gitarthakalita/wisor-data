@@ -5,17 +5,17 @@ const PersonalInfo = inject("store")(observer(({ store }) => {
     return (
         <div className="personal-info-container">
 
-            <h2>Personal Information</h2>
+            <h3>Personal Information</h3>
 
             <div className="info-item">
                 <div className="label"> User Type </div>
-                <div className="info"> {store.user.usertype}  </div>
+                <div className="info"> {store.user.userType}  </div>
 
             </div>
 
             <div className="info-item">
                 <div className="label"> Name </div>
-                <div className="info"> {store.user.firstname} {store.user.lastname}  </div>
+                <div className="info"> {store.user.firstName} {store.user.lastName}  </div>
 
             </div>
 

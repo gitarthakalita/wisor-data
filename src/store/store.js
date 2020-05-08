@@ -2,13 +2,10 @@ import { observable} from 'mobx';
 
 class Store {
 
-    // @observable user = {
-    //     userid : null
-    // }
-    
+    // @observable user = ""    
     @observable user = []
 
-    @observable address = []
+
     
 
 }

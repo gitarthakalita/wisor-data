@@ -1,75 +1,70 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { inject, observer } from 'mobx-react';
-import { toJS } from 'mobx';
+
 
 
 const AddressInfo = inject("store")(observer(({ store }) => {
 
-    
-        // console.log(toJS(store.user))
-
-        useEffect(() => {
-            // store.address = toJS(store.user).wsrUserAddress;
-
-            // console.log(toJS(store.address));
-            
-        })
-
-
-
-        
-
-    
-    
 
     return (
 
         
         <div className="address-info-container">
 
-            <h2>Address Information</h2>
+            <h3>Address Information</h3>
 
             <div className="info-item">
                 <div className="label"> Address Type </div>
-                <div className="info">  {store.address.addresstype} </div>
+                <div className="info">  {store.user.userAddresses ? store.user.userAddresses[0].addressType : ''} </div>
             
 
             </div>
 
             <div className="info-item">
                 <div className="label"> Address Line 1 </div>
-                <div className="info">   </div>
+                <div className="info"> {store.user.userAddresses ? store.user.userAddresses[0].addressLine1 : ''} </div>
 
             </div>
 
             <div className="info-item">
                 <div className="label"> Address Line 2 </div>
-                <div className="info">  {store.user.addressline1} </div>
+                <div className="info">  {store.user.userAddresses ? store.user.userAddresses[0].addressLine2 : ''} </div>
 
             </div>
 
             <div className="info-item">
                 <div className="label"> City </div>
-                <div className="info">  {store.user.city} </div>
+                <div className="info">  {store.user.userAddresses ? store.user.userAddresses[0].city : ''} </div>
 
             </div>
 
             <div className="info-item">
                 <div className="label"> State </div>
-                <div className="info">  {store.user.state} </div>
+                <div className="info">  {store.user.userAddresses ? store.user.userAddresses[0].state : ''} </div>
 
             </div>
             <div className="info-item">
                 <div className="label"> Country </div>
-                <div className="info">  {store.user.city} </div>
+                <div className="info"> {store.user.userAddresses ? store.user.userAddresses[0].country : ''}</div>
 
             </div>
 
             <div className="info-item">
-                <div className="label"> Pincode </div>
-                <div className="info">  {store.user.city} </div>
+                <div className="label"> Postal Code </div>
+                <div className="info">  {store.user.userAddresses ? store.user.userAddresses[0].postalCode : ''} </div>
 
             </div>
+
+
+<h3>Group Information</h3>
+      
+            <div className="info-item">
+                <div className="label"> Group Name </div>
+                <div className="info">  {store.user.userInGroups ? store.user.userInGroups[0].userGroup.groupName : ''} </div>
+
+            </div>
+
+
 
         </div>
         

@@ -6,7 +6,8 @@ import { observer, inject } from "mobx-react";
 import UserCard from './components/UserCard';
 
 import './user-profile.scss';
-// import { toJS } from 'mobx';
+import CustomButton from '../../UI-components/CustomButton/CustomButton';
+
 
 @inject("store")
 @observer
@@ -18,70 +19,7 @@ class UserProfile extends Component {
 
             user: [],
 
-            userid: "",
-            usertype: "",
-            firstname: "",
-            lastname: "",
-            phone: "",
-            email: "",
-            password: "",
-            activeflag: "",
-            createdate: "",
-            updatedate: "",
-            inactivedate: "",
-            dob: "",
-            gender: "",
-            wsrUserAddress: [
-                {
-                    user_address_id: "",
-                    addresstype: "",
-                    addressline1: "",
-                    addressline2: "",
-                    phone: "",
-                    city: "",
-                    state: "",
-                    country: "",
-                    postalcode: "",
-                    email: "",
-                    updatedate: "",
-                    createdate: "",
-                    inactivedate: "",
-                    activeflag: ""
-                },
 
-            ],
-            wsrUserInGroup: [
-                {
-                    user_in_group_id: "",
-                    delete_time: "",
-                    insert_time: "",
-                    group_admin: ""
-                },
-                {
-                    user_in_group_id: "",
-                    delete_time: "",
-                    insert_time: "",
-                    group_admin: ""
-                }
-            ],
-
-            wsrUserGroupType: [
-                {
-                    user_group_type_id: "",
-                    group_name: "",
-                    wsrUserGroupXref: {
-                        user_group_id: "",
-                        insert_time: "",
-                        wsrUserInGroup: {
-                            user_in_group_id: "",
-                            delete_time: "",
-                            insert_time: "",
-                            group_admin: ""
-                        }
-                    }
-                }
-
-            ]
         }
     }
 
@@ -91,15 +29,18 @@ class UserProfile extends Component {
         const { store } = this.props;
         // const { user } = this.state;
 
-        axios.get('http://localhost:8080/user-data', this.state)
-            .then((response) => {
-                
 
-                store.user = response.data[0];
+
+
+        axios.get('http://ec2-35-174-156-7.compute-1.amazonaws.com:8080/api/registration/users/1', this.state)
+            .then((response) => {
+
+
+                store.user = response.data;
 
                 // console.log(toJS(store.user));
 
-                // console.log(response.data[0]);
+                // console.log(response.data);
 
             })
             .catch((error) => {
@@ -113,14 +54,35 @@ class UserProfile extends Component {
     render() {
         // const { store } = this.props;
 
-        
-        
+
+
 
         return (
 
-            <div>
-               <UserCard/>
-                
+            <div className="user-profile-container">
+                <div className="profile-menu profile-item">
+                    <CustomButton variantWhite>
+                        Profile Information
+                    </CustomButton>
+                    <CustomButton variantWhite>
+                        Dashboard
+                    </CustomButton>
+
+                    <CustomButton variantWhite>
+                       Account Settings
+                    </CustomButton>
+
+                    <CustomButton variantWhite>
+                        Log Out
+                    </CustomButton>
+                </div>
+                <UserCard className="profile-item" />
+                <div className="profile-action profile-item">
+                    <CustomButton variantTwo>
+                        Update Profile
+                    </CustomButton>
+                </div>
+
             </div>
         )
     }

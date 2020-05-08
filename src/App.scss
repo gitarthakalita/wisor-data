@@ -3,3 +3,19 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+a{
+  text-decoration: none;
+
+  color: inherit;
+}
+
+.App{
+  display: flex;
+  flex-direction: column;
+
+
+  height: 100vh;
+
+justify-content: space-between;
+}

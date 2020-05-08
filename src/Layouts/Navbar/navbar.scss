@@ -1,0 +1,41 @@
+.navbar-container{
+    display: grid;
+
+    height: 5rem;
+
+    padding: 0 4rem;
+
+    grid-template-columns: 1fr 5fr 1.6fr;
+    align-items: center;
+
+    gap: 2rem;
+
+
+    top: 0;
+    left: 0;
+    right: 0;
+
+    position: fixed;
+    background: white;
+
+    .logo{
+        img{
+            height: 4rem;
+        }
+    }
+
+    .menu{
+        display: flex;
+        justify-content: space-evenly;
+
+        // .menu-item{
+        //     font-size: 0.8rem !important;
+        // }
+    }
+
+    .signin{
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
