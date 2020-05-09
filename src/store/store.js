@@ -3,7 +3,12 @@ import { observable} from 'mobx';
 class Store {
 
     // @observable user = ""    
-    @observable user = []
+    @observable user = [];
+
+    @observable notification = {
+        type: '',
+        message: ''
+    };
 
 
     

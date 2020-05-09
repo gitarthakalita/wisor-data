@@ -1,0 +1,41 @@
+.form-input-group{
+
+
+    height: 2.4rem;
+    width: 30rem;
+
+    display: grid;
+    grid-template-columns: 1fr 1.5fr ;
+    margin: 1rem 0;
+
+    align-items: center;
+
+    gap:1rem;
+
+
+    .form-label{
+        padding: 0.5rem;
+
+        background: rgb(247, 245, 245);
+
+        border-left: 0.2rem solid rgb(104, 122, 206);
+
+        width: 100%;
+
+        font-size: 1rem;
+
+        font-weight: 500;
+    }
+
+    .form-input{
+        height: 90%;
+
+        padding: 0.25rem;
+
+        font-size: 1rem;
+
+        outline: none;
+
+        border: 0.15rem solid rgb(104, 122, 206);
+    }
+}

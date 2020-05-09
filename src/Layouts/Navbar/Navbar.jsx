@@ -18,8 +18,11 @@ const Navbar = () => {
                 <CustomLink >Blog</CustomLink>
                 <CustomLink >Courses</CustomLink>
                 <CustomLink >Resources</CustomLink>
+                <CustomLink >Services</CustomLink>
                 <CustomLink >Pricing</CustomLink>
-                <CustomLink >Service Provider Registration</CustomLink>
+                <Link to="/register">
+                    <CustomLink >Service Provider Registration</CustomLink>
+                </Link>
 
                 <Link to="/profile">
                     <CustomLink >Profile</CustomLink>

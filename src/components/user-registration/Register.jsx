@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+
+import './register.scss';
+import RegistrationData from './components/RegistrationData';
+import CustomButton from '../../UI-components/CustomButton/CustomButton';
+
 class Register extends Component {
 
     constructor(props){
@@ -12,6 +17,8 @@ class Register extends Component {
 
                 wsrUserAccount: {
 
+
+                    
                     usertype: "",
                     firstname: '',
                     lastname: '',
@@ -66,7 +73,7 @@ class Register extends Component {
 
        
 
-        axios.post("http://localhost:8080/user-create", JSON.stringify(this.state))
+        axios.post("http://ec2-35-174-156-7.compute-1.amazonaws.com:8080/api/registration/users", JSON.stringify(this.state))
             .then(response => {
                 console.log(response);
 
@@ -87,9 +94,21 @@ class Register extends Component {
     }
 
     render() {
+        
+
+       
+
         return (
             <div className="register-container">
+
                 
+                <form className="form-group" onSubmit={this.submitHandler.bind(this)} >
+                 <RegistrationData 
+                    onChange={this.changeHandler}
+                 />
+                 
+                 <CustomButton>Submit</CustomButton> 
+                </form>
             </div>
         )
     }

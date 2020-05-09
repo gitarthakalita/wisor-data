@@ -2,7 +2,7 @@ import React from 'react';
 
 import './footer.scss';
 import { Link } from 'react-router-dom';
-import CustomLink from '../../UI-components/CustomLink/CustomLink';
+
 
 const Footer = () => (
     <div className="footer-container">
