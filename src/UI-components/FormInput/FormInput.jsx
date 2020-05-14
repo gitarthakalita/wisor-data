@@ -2,7 +2,7 @@ import React from 'react';
 
 import './form-input.scss';
 
-const FormInput = ({ handleChange, Label,  ...otherProps }) => (
+const FormInput = ({ changeHandler, Label,  ...otherProps }) => (
     <div className="form-input-group">
         <label className={`
                 ${Label ? 'form-label' : ''}
@@ -11,7 +11,7 @@ const FormInput = ({ handleChange, Label,  ...otherProps }) => (
 
         </label>
 
-        <input className="form-input" onChange={handleChange} {...otherProps} />
+        <input className="form-input" onChange={changeHandler} {...otherProps} />
 
     </div>
 )

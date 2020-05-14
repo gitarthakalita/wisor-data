@@ -3,22 +3,24 @@ import axios from 'axios';
 
 
 import './register.scss';
-import RegistrationData from './components/RegistrationData';
+
 import CustomButton from '../../UI-components/CustomButton/CustomButton';
+import FormInput from '../../UI-components/FormInput/FormInput';
+
 
 class Register extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
 
-        this.state ={
+        this.state = {
 
             register_data: {
 
                 wsrUserAccount: {
 
 
-                    
+
                     usertype: "",
                     firstname: '',
                     lastname: '',
@@ -67,48 +69,76 @@ class Register extends Component {
     }
 
     submitHandler = (e) => {
-        const { store } = this.props;
+        // const { store } = this.props;
 
         e.preventDefault();
 
-       
+
 
         axios.post("http://ec2-35-174-156-7.compute-1.amazonaws.com:8080/api/registration/users", JSON.stringify(this.state))
             .then(response => {
                 console.log(response);
-
-                if (response.status === 200) {
-                    store.notification = { type: 'success', message: response.data.status, phone: response.data.phone };
-                    store.mobile.push(response.data.phone);
-                    this.props.history.push(`/thank-you`);
-                } if (response.status === null) {
-                    this.props.history.push(`/404`);
-                    console.log('Api error or bad request');
-                }
             })
             .catch(error => {
                 console.log(error);
-                console.log(JSON.stringify(this.state));
-                // alert(JSON.stringify(this.state)+ "\n");
+
+                console.log(this.state);
+                
+
             })
     }
 
     render() {
-        
 
-       
+        const {  firstname, lastname, email, phone, password, addressline1, addressline2, city, state, postalcode, country, dob, gender,  addresstype } = this.state;
+
+
+
 
         return (
             <div className="register-container">
 
-                
-                <form className="form-group" onSubmit={this.submitHandler.bind(this)} >
-                 <RegistrationData 
-                    onChange={this.changeHandler}
-                 />
-                 
-                 <CustomButton>Submit</CustomButton> 
+
+                <form className="personal-info-container form-group" onSubmit={this.submitHandler.bind(this)} >
+
+                    <div className="reg-data-group">
+                        <h3>Personal Information</h3>
+
+                        <FormInput Label="Firstname" value={firstname} onChange={this.changeHandler} />
+                        <FormInput Label=" Lastname " value={ lastname } onChange={this.changeHandler} />
+                        <FormInput Label=" Phone " value={ phone } onChange={this.changeHandler} />
+                        <FormInput Label=" Email " value={ email } onChange={this.changeHandler} />
+                        <FormInput Label=" Password " value={ password } onChange={this.changeHandler} />
+                        <FormInput Label=" Gender " value={ gender } onChange={this.changeHandler} />
+                        <FormInput Label=" Date of Birth " value={ dob } type="date" onChange={this.changeHandler} />
+                    </div>
+
+                    <div className="reg-data-group">
+                        <h3>Address Information</h3>
+                        <FormInput Label=" Address Type " value={ addresstype } onChange={this.changeHandler} />
+                        <FormInput Label="Address Line 1" value={ addressline1 } onChange={this.changeHandler} />
+                        <FormInput Label=" Address Line 2 " value={ addressline2 } onChange={this.changeHandler} />
+
+                        <FormInput Label=" City " value={ city } onChange={this.changeHandler} />
+                        <FormInput Label=" State " value={ state } onChange={this.changeHandler} />
+                        <FormInput Label=" Country " value={ country } onChange={this.changeHandler} />
+                        <FormInput Label=" Postal Code " value={ postalcode } onChange={this.changeHandler} />
+
+                    </div>
+
+                    {/* <div className="reg-data-group">
+                        <h3>Group Information</h3>
+                        <FormInput Label=" Group Name " onChange={this.changeHandler} />
+
+
+                    </div> */}
+
+                    <CustomButton type="submit" >Submit</CustomButton>
+
                 </form>
+
+
+
             </div>
         )
     }
