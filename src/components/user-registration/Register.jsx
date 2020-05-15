@@ -17,45 +17,68 @@ class Register extends Component {
 
             // register_data: {
 
-            wsrUserAccount: {
+            // wsrUserAccount: {
 
 
 
-                usertype: "",
-                firstname: '',
-                lastname: '',
-                phone: '',
-                email: '',
-                password: '',
-                activeflag: '',
-                dob: '',
-                gender: ''
+            //     usertype: "",
+            //     firstname: '',
+            //     lastname: '',
+            //     phone: '',
+            //     email: '',
+            //     password: '',
+            //     activeflag: '',
+            //     dob: '',
+            //     gender: ''
 
-            },
-            wsrUserAddressList: [
-                {
-                    addresstype: '',
-                    addressline1: '',
-                    addressline2: '',
-                    phone: '',
-                    state: '',
-                    country: '',
-                    postalcode: '',
-                    email: '',
-                    activeflag: ''
-                }
-            ],
+            // },
+            // wsrUserAddressList: [
+            //     {
+            //         addresstype: '',
+            //         addressline1: '',
+            //         addressline2: '',
+            //         phone: '',
+            //         state: '',
+            //         country: '',
+            //         postalcode: '',
+            //         email: '',
+            //         activeflag: ''
+            //     }
+            // ],
 
-            wsrUserGroupTypeList: [
-                {
-                    group_name: '',
-                    wsrUserGroupXref: {
-                        wsrUserInGroup: {
-                            group_admin: ''
-                        }
-                    }
-                }
-            ]
+            // wsrUserGroupTypeList: [
+            //     {
+            //         group_name: '',
+            //         wsrUserGroupXref: {
+            //             wsrUserInGroup: {
+            //                 group_admin: ''
+            //             }
+            //         }
+            //     }
+            // ]
+
+
+
+
+
+            usertype: '',
+            firstname: '',
+            lastname: '',
+            phone: '',
+            email: '',
+            password: '',
+            activeflag: '',
+            dob: '',
+            gender: '',
+            addresstype: '',
+            addressline1: '',
+            addressline2: '',
+            state: '',
+            country: '',
+            postalcode: '',
+
+
+
 
 
         }
@@ -74,54 +97,50 @@ class Register extends Component {
 
         // let data = JSON.stringify(this.state)
 
-        let data = JSON.stringify({
-            wsrUserAccount: {
+        // let data = JSON.stringify({
+        //     wsrUserAccount: {
 
 
 
-                usertype: '',
-                firstname: this.state.firstname,
-                lastname: this.state.lastname,
-                phone: this.state.phone,
-                email: this.state.email,
-                password: this.state.password,
-                activeflag: '',
-                dob: this.state.dob,
-                gender: this.state.gender
+        //         usertype: '',
+        //         firstname: this.state.firstname,
+        //         lastname: this.state.lastname,
+        //         phone: this.state.phone,
+        //         email: this.state.email,
+        //         password: this.state.password,
+        //         activeflag: '',
+        //         dob: this.state.dob,
+        //         gender: this.state.gender
 
-            },
-            wsrUserAddressList: [
-                {
-                    addresstype: this.state.addresstype,
-                    addressline1: this.state.addressline1,
-                    addressline2: this.state.addressline2,
-                    phone: this.state.phone,
-                    state: this.state.state,
-                    country: this.state.country,
-                    postalcode: this.state.postalcode,
-                    email: this.state.email,
-                    activeflag: ''
-                }
-            ],
+        //     },
+        //     wsrUserAddressList: [
+        //         {
+        //             addresstype: this.state.addresstype,
+        //             addressline1: this.state.addressline1,
+        //             addressline2: this.state.addressline2,
+        //             phone: this.state.phone,
+        //             state: this.state.state,
+        //             country: this.state.country,
+        //             postalcode: this.state.postalcode,
+        //             email: this.state.email,
+        //             activeflag: ''
+        //         }
+        //     ],
 
-            wsrUserGroupTypeList: [
-                {
-                    group_name: '',
-                    wsrUserGroupXref: {
-                        wsrUserInGroup: {
-                            group_admin: ''
-                        }
-                    }
-                }
-            ]
-        })
+        //     wsrUserGroupTypeList: [
+        //         {
+        //             group_name: '',
+        //             wsrUserGroupXref: {
+        //                 wsrUserInGroup: {
+        //                     group_admin: ''
+        //                 }
+        //             }
+        //         }
+        //     ]
+        // })
 
 
-        axios.post("http://ec2-35-174-156-7.compute-1.amazonaws.com:8080/api/registration/users", data, {
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
+        axios.post("http://ec2-35-174-156-7.compute-1.amazonaws.com:8080/api/registration/users", this.state)
             .then(response => {
                 console.log(response);
             })
@@ -166,27 +185,27 @@ class Register extends Component {
 
                         <div className="form-input-group">
                             <label className="form-label">Firstname </label>
-                            <input className="form-input" onChange={this.changeHandler} value={firstname} />
+                            <input className="form-input"  defaultValue={firstname}  onChange={this.changeHandler} />
                         </div>
                         <div className="form-input-group">
                             <label className="form-label">Lastname </label>
-                            <input className="form-input" onChange={this.changeHandler} value={lastname} />
+                            <input className="form-input" onChange={this.changeHandler} defaultValue={lastname} />
                         </div>
                         <div className="form-input-group">
                             <label className="form-label">Phone </label>
-                            <input className="form-input" onChange={this.changeHandler} value={phone} />
+                            <input className="form-input" onChange={this.changeHandler} defaultValue={phone} />
                         </div>
                         <div className="form-input-group">
                             <label className="form-label">Email </label>
-                            <input className="form-input" onChange={this.changeHandler} value={email} />
+                            <input className="form-input" onChange={this.changeHandler} defaultValue={email} />
                         </div>
                         <div className="form-input-group">
                             <label className="form-label">Password </label>
-                            <input className="form-input" onChange={this.changeHandler} value={password} />
+                            <input className="form-input" onChange={this.changeHandler} defaultValue={password} />
                         </div>
                         <div className="form-input-group">
                             <label className="form-label">Gender </label>
-                            <input className="form-input" onChange={this.changeHandler} value={gender} />
+                            <input className="form-input" onChange={this.changeHandler} defaultValue={gender} />
                         </div>
 
 
@@ -206,35 +225,35 @@ class Register extends Component {
 
                         <div className="form-input-group">
                             <label className="form-label">Address Type </label>
-                            <input className="form-input" onChange={this.changeHandler} value={addresstype} />
+                            <input className="form-input" onChange={this.changeHandler} defaultValue={addresstype} />
                         </div>
                         <div className="form-input-group">
                             <label className="form-label">AddressLine 1 </label>
-                            <input className="form-input" onChange={this.changeHandler} value={addressline1} />
+                            <input className="form-input" onChange={this.changeHandler} defaultValue={addressline1} />
                         </div>
                         <div className="form-input-group">
                             <label className="form-label">AddressLine 2 </label>
-                            <input className="form-input" onChange={this.changeHandler} value={addressline2} />
+                            <input className="form-input" onChange={this.changeHandler} defaultValue={addressline2} />
                         </div>
                         <div className="form-input-group">
                             <label className="form-label">Phone </label>
-                            <input className="form-input" onChange={this.changeHandler} value={phone} />
+                            <input className="form-input" onChange={this.changeHandler} defaultValue={phone} />
                         </div>
                         <div className="form-input-group">
                             <label className="form-label">City </label>
-                            <input className="form-input" onChange={this.changeHandler} value={city} />
+                            <input className="form-input" onChange={this.changeHandler} defaultValue={city} />
                         </div>
                         <div className="form-input-group">
                             <label className="form-label">State </label>
-                            <input className="form-input" onChange={this.changeHandler} value={state} />
+                            <input className="form-input" onChange={this.changeHandler} defaultValue={state} />
                         </div>
                         <div className="form-input-group">
                             <label className="form-label">Country </label>
-                            <input className="form-input" onChange={this.changeHandler} value={country} />
+                            <input className="form-input" onChange={this.changeHandler} defaultValue={country} />
                         </div>
                         <div className="form-input-group">
                             <label className="form-label">Postal Code </label>
-                            <input className="form-input" onChange={this.changeHandler} value={postalcode} />
+                            <input className="form-input" onChange={this.changeHandler} defaultValue={postalcode} />
                         </div>
 
 
