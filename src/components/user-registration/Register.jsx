@@ -15,48 +15,7 @@ class Register extends Component {
 
         this.state = {
 
-            // register_data: {
-
-            // wsrUserAccount: {
-
-
-
-            //     usertype: "",
-            //     firstname: '',
-            //     lastname: '',
-            //     phone: '',
-            //     email: '',
-            //     password: '',
-            //     activeflag: '',
-            //     dob: '',
-            //     gender: ''
-
-            // },
-            // wsrUserAddressList: [
-            //     {
-            //         addresstype: '',
-            //         addressline1: '',
-            //         addressline2: '',
-            //         phone: '',
-            //         state: '',
-            //         country: '',
-            //         postalcode: '',
-            //         email: '',
-            //         activeflag: ''
-            //     }
-            // ],
-
-            // wsrUserGroupTypeList: [
-            //     {
-            //         group_name: '',
-            //         wsrUserGroupXref: {
-            //             wsrUserInGroup: {
-            //                 group_admin: ''
-            //             }
-            //         }
-            //     }
-            // ]
-
+          
 
 
 
@@ -97,47 +56,6 @@ class Register extends Component {
 
         // let data = JSON.stringify(this.state)
 
-        // let data = JSON.stringify({
-        //     wsrUserAccount: {
-
-
-
-        //         usertype: '',
-        //         firstname: this.state.firstname,
-        //         lastname: this.state.lastname,
-        //         phone: this.state.phone,
-        //         email: this.state.email,
-        //         password: this.state.password,
-        //         activeflag: '',
-        //         dob: this.state.dob,
-        //         gender: this.state.gender
-
-        //     },
-        //     wsrUserAddressList: [
-        //         {
-        //             addresstype: this.state.addresstype,
-        //             addressline1: this.state.addressline1,
-        //             addressline2: this.state.addressline2,
-        //             phone: this.state.phone,
-        //             state: this.state.state,
-        //             country: this.state.country,
-        //             postalcode: this.state.postalcode,
-        //             email: this.state.email,
-        //             activeflag: ''
-        //         }
-        //     ],
-
-        //     wsrUserGroupTypeList: [
-        //         {
-        //             group_name: '',
-        //             wsrUserGroupXref: {
-        //                 wsrUserInGroup: {
-        //                     group_admin: ''
-        //                 }
-        //             }
-        //         }
-        //     ]
-        // })
 
 
         axios.post("http://ec2-35-174-156-7.compute-1.amazonaws.com:8080/api/registration/users", this.state)
