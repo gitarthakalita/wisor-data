@@ -15,58 +15,55 @@ class Register extends Component {
 
         this.state = {
 
-            register_data: {
+            // register_data: {
 
-                wsrUserAccount: {
+            wsrUserAccount: {
 
 
 
-                    usertype: "",
-                    firstname: '',
-                    lastname: '',
+                usertype: "",
+                firstname: '',
+                lastname: '',
+                phone: '',
+                email: '',
+                password: '',
+                activeflag: '',
+                dob: '',
+                gender: ''
+
+            },
+            wsrUserAddressList: [
+                {
+                    addresstype: '',
+                    addressline1: '',
+                    addressline2: '',
                     phone: '',
+                    state: '',
+                    country: '',
+                    postalcode: '',
                     email: '',
-                    password: '',
-                    activeflag: '',
-                    dob: '',
-                    gender: ''
+                    activeflag: ''
+                }
+            ],
 
-                },
-                wsrUserAddressList: [
-                    {
-                        addresstype: '',
-                        addressline1: '',
-                        addressline2: '',
-                        phone: '',
-                        state: '',
-                        country: '',
-                        postalcode: '',
-                        email: '',
-                        activeflag: ''
-                    }
-                ],
-
-                wsrUserGroupTypeList: [
-                    {
-                        group_name: '',
-                        wsrUserGroupXref: {
-                            wsrUserInGroup: {
-                                group_admin: ''
-                            }
+            wsrUserGroupTypeList: [
+                {
+                    group_name: '',
+                    wsrUserGroupXref: {
+                        wsrUserInGroup: {
+                            group_admin: ''
                         }
                     }
-                ]
+                }
+            ]
 
 
-            }
         }
     }
 
 
 
-    changeHandler = (e) => {
-        this.setState({ [e.target.name]: e.target.value })
-    }
+
 
     submitHandler = (e) => {
         // const { store } = this.props;
@@ -75,7 +72,56 @@ class Register extends Component {
 
 
 
-        axios.post("http://ec2-35-174-156-7.compute-1.amazonaws.com:8080/api/registration/users", JSON.stringify(this.state))
+        // let data = JSON.stringify(this.state)
+
+        let data = JSON.stringify({
+            wsrUserAccount: {
+
+
+
+                usertype: '',
+                firstname: this.state.firstname,
+                lastname: this.state.lastname,
+                phone: this.state.phone,
+                email: this.state.email,
+                password: this.state.password,
+                activeflag: '',
+                dob: this.state.dob,
+                gender: this.state.gender
+
+            },
+            wsrUserAddressList: [
+                {
+                    addresstype: this.state.addresstype,
+                    addressline1: this.state.addressline1,
+                    addressline2: this.state.addressline2,
+                    phone: this.state.phone,
+                    state: this.state.state,
+                    country: this.state.country,
+                    postalcode: this.state.postalcode,
+                    email: this.state.email,
+                    activeflag: ''
+                }
+            ],
+
+            wsrUserGroupTypeList: [
+                {
+                    group_name: '',
+                    wsrUserGroupXref: {
+                        wsrUserInGroup: {
+                            group_admin: ''
+                        }
+                    }
+                }
+            ]
+        })
+
+
+        axios.post("http://ec2-35-174-156-7.compute-1.amazonaws.com:8080/api/registration/users", data, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
             .then(response => {
                 console.log(response);
             })
@@ -83,14 +129,19 @@ class Register extends Component {
                 console.log(error);
 
                 console.log(this.state);
-                
+
 
             })
     }
 
+
+    changeHandler = (e) => {
+        this.setState({ [e.target.name]: e.target.value })
+    }
+
     render() {
 
-        const {  firstname, lastname, email, phone, password, addressline1, addressline2, city, state, postalcode, country, dob, gender,  addresstype } = this.state;
+        const { firstname, lastname, email, phone, password, addressline1, addressline2, city, state, postalcode, country, dob, gender, addresstype } = this.state;
 
 
 
@@ -104,25 +155,89 @@ class Register extends Component {
                     <div className="reg-data-group">
                         <h3>Personal Information</h3>
 
-                        <FormInput Label="Firstname" value={firstname} onChange={this.changeHandler} />
+                        {/* <FormInput Label="Firstname" value={firstname} onChange={this.changeHandler} />
                         <FormInput Label=" Lastname " value={ lastname } onChange={this.changeHandler} />
                         <FormInput Label=" Phone " value={ phone } onChange={this.changeHandler} />
                         <FormInput Label=" Email " value={ email } onChange={this.changeHandler} />
                         <FormInput Label=" Password " value={ password } onChange={this.changeHandler} />
                         <FormInput Label=" Gender " value={ gender } onChange={this.changeHandler} />
-                        <FormInput Label=" Date of Birth " value={ dob } type="date" onChange={this.changeHandler} />
+                        <FormInput Label=" Date of Birth " value={ dob } type="date" onChange={this.changeHandler} /> */}
+
+
+                        <div className="form-input-group">
+                            <label className="form-label">Firstname </label>
+                            <input className="form-input" onChange={this.changeHandler} value={firstname} />
+                        </div>
+                        <div className="form-input-group">
+                            <label className="form-label">Lastname </label>
+                            <input className="form-input" onChange={this.changeHandler} value={lastname} />
+                        </div>
+                        <div className="form-input-group">
+                            <label className="form-label">Phone </label>
+                            <input className="form-input" onChange={this.changeHandler} value={phone} />
+                        </div>
+                        <div className="form-input-group">
+                            <label className="form-label">Email </label>
+                            <input className="form-input" onChange={this.changeHandler} value={email} />
+                        </div>
+                        <div className="form-input-group">
+                            <label className="form-label">Password </label>
+                            <input className="form-input" onChange={this.changeHandler} value={password} />
+                        </div>
+                        <div className="form-input-group">
+                            <label className="form-label">Gender </label>
+                            <input className="form-input" onChange={this.changeHandler} value={gender} />
+                        </div>
+
+
+
                     </div>
 
                     <div className="reg-data-group">
                         <h3>Address Information</h3>
-                        <FormInput Label=" Address Type " value={ addresstype } onChange={this.changeHandler} />
+                        {/* <FormInput Label=" Address Type " value={ addresstype } onChange={this.changeHandler} />
                         <FormInput Label="Address Line 1" value={ addressline1 } onChange={this.changeHandler} />
                         <FormInput Label=" Address Line 2 " value={ addressline2 } onChange={this.changeHandler} />
 
                         <FormInput Label=" City " value={ city } onChange={this.changeHandler} />
                         <FormInput Label=" State " value={ state } onChange={this.changeHandler} />
                         <FormInput Label=" Country " value={ country } onChange={this.changeHandler} />
-                        <FormInput Label=" Postal Code " value={ postalcode } onChange={this.changeHandler} />
+                        <FormInput Label=" Postal Code " value={ postalcode } onChange={this.changeHandler} /> */}
+
+                        <div className="form-input-group">
+                            <label className="form-label">Address Type </label>
+                            <input className="form-input" onChange={this.changeHandler} value={addresstype} />
+                        </div>
+                        <div className="form-input-group">
+                            <label className="form-label">AddressLine 1 </label>
+                            <input className="form-input" onChange={this.changeHandler} value={addressline1} />
+                        </div>
+                        <div className="form-input-group">
+                            <label className="form-label">AddressLine 2 </label>
+                            <input className="form-input" onChange={this.changeHandler} value={addressline2} />
+                        </div>
+                        <div className="form-input-group">
+                            <label className="form-label">Phone </label>
+                            <input className="form-input" onChange={this.changeHandler} value={phone} />
+                        </div>
+                        <div className="form-input-group">
+                            <label className="form-label">City </label>
+                            <input className="form-input" onChange={this.changeHandler} value={city} />
+                        </div>
+                        <div className="form-input-group">
+                            <label className="form-label">State </label>
+                            <input className="form-input" onChange={this.changeHandler} value={state} />
+                        </div>
+                        <div className="form-input-group">
+                            <label className="form-label">Country </label>
+                            <input className="form-input" onChange={this.changeHandler} value={country} />
+                        </div>
+                        <div className="form-input-group">
+                            <label className="form-label">Postal Code </label>
+                            <input className="form-input" onChange={this.changeHandler} value={postalcode} />
+                        </div>
+
+
 
                     </div>
 

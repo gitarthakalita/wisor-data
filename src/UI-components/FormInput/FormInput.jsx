@@ -2,16 +2,16 @@ import React from 'react';
 
 import './form-input.scss';
 
-const FormInput = ({ changeHandler, Label,  ...otherProps }) => (
+const FormInput = ({ changeHandler, Label, value, ...otherProps }) => (
     <div className="form-input-group">
         <label className={`
                 ${Label ? 'form-label' : ''}
             `}>
-            {Label}
+            {Label} 
 
         </label>
 
-        <input className="form-input" onChange={changeHandler} {...otherProps} />
+        <input className="form-input"  onChange={changeHandler} {...otherProps}  />
 
     </div>
 )
